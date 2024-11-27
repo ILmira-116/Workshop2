@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Добро пожаловать, {{ user.username }}!</h1>
+    
+    
+    <h3>Информация о пользователе</h3>
+  
+
+    <h3>Настройки</h3>
+    <ul>
+      <li><a>Изменить пароль</a></li>
+      <li>
+        <form action="{% url 'users:logout' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit">Выйти</button>
+        </form>
+      </li>
+    </ul>
+  </div>
+{% endblock %}

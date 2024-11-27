@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Workshop{% endblock %}</title>
+</head>
+<body>
+<header>
+    <div class="catalog">
+        <a href="/catalog">Каталог</a>
+    </div>
+    <div class="logo">
+        <span>Workshop</span>
+    </div>
+    <div class="right">
+        <div class="search">
+            <input type="text" placeholder="Поиск">
+        </div>
+        <div class="favorites">
+            <a href="/favorites">Избранное</a>
+        </div>
+        <div class="cart">
+            <a href="/cart">Корзина</a>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <!-- Здесь будут ссылки навигации -->
+</nav>
+
+<div class="container">
+    {% block content %}
+    <!-- Контент будет подставляться дочерними шаблонами -->
+    {% endblock %}
+</div>
+
+<footer>
+    <p>© 2024 Creative Workshop. Все права защищены.</p>
+</footer>
+
+
+</body>
+</html>

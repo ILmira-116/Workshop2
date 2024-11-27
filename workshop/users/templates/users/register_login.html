@@ -1,0 +1,228 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    .content {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .form-container {
+        width: 45%;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-grp {
+        margin-bottom: 20px;
+    }
+
+    .fld-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .wrapped-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .submit-btn {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+</style>
+    <div class="content">
+        <!-- Левая форма (Авторизация) -->
+        <div class="form-container">
+            <div class="title">Зарегистрированные клиенты</div>
+            <form class="form-grp" method="POST" enctype="multipart/form-data" action="{% url 'users:register_login' %}">
+                {% csrf_token %}
+    
+                <div class="fld-grp" data-required="true">
+                    <label class="fld-label" for="id_username"><span>Номер телефона или почта*</span></label>
+                    {{ login_form.username }}  
+                    {% if login_form.username.errors %}
+                        <ul class="errorlist">
+                            {% for error in login_form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp" data-required="true">
+                    <label class="fld-label" for="id_password"><span>Пароль*</span></label>
+                    {{ login_form.password }}  
+                    {% if login_form.password.errors %}
+                        <ul class="errorlist">
+                            {% for error in login_form.password.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp" data-required="true">
+                    <input class="wrapped-input" type="checkbox" id="widgetu584_input" name="custom_U584" required>
+                    <label for="widgetu584_input">Даю Согласие на обработку персональных данных</label>
+                </div>
+    
+                <button class="submit-btn" type="submit" value="Отправить" name='login'>Войти</button>
+            </form>
+            <p>Забыли пароль? <a href="{% url 'users:password_reset' %}">Сбросить пароль</a></p>
+            {% if login_form.errors %}
+            <div class="errors">
+                <p>Ошибки входа:</p>
+                <ul>
+                    {% for error in login_form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    
+        <!-- Правая форма (Регистрация) -->
+        <div class="form-container">
+            <div class="title">Регистрация</div>
+            <form class="form-grp" method="POST" enctype="multipart/form-data" action="{% url 'users:register_login' %}">
+                {% csrf_token %}
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_name"><span>Имя*</span></label>
+                    {{ register_form.name }}
+                    {% if register_form.name.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_last_name"><span>Фамилия*</span></label>
+                    {{ register_form.last_name }}
+                    {% if register_form.last_name.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.last_name.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_birth_date"><span>Дата рождения*</span></label>
+                    {{ register_form.birth_date }}
+                    {% if register_form.birth_date.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.birth_date.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_phone_number"><span>Телефон*</span></label>
+                    {{ register_form.phone_number }}
+                    {% if register_form.phone_number.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.phone_number.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_email"><span>Адрес электронной почты*</span></label>
+                    {{ register_form.email }}
+                    {% if register_form.email.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.email.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_password1"><span>Пароль*</span></label>
+                    {{ register_form.password1 }}
+                    {% if register_form.password1.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.password1.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <div class="fld-grp">
+                    <label class="fld-label" for="id_password2"><span>Подтвердите пароль*</span></label>
+                    {{ register_form.password2 }}
+                    {% if register_form.password2.errors %}
+                        <ul class="errorlist">
+                            {% for error in register_form.password2.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+    
+                <button class="submit-btn" type="submit" name='register'>Зарегистрироваться</button>
+            </form>
+    
+            {% if register_form.errors %}
+            <div class="errors">
+                <p>Ошибки регистрации:</p>
+                <ul>
+                    {% for field in register_form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

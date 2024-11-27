@@ -1,0 +1,98 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Шапка */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #ccc;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a7f5e; /* Цвет для логотипа */
+}
+
+header .catalog a, 
+header .favorites a, 
+header .cart a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+header .catalog a:hover, 
+header .favorites a:hover, 
+header .cart a:hover {
+    background-color: #2a7f5e;
+    color: white;
+}
+
+/* Контейнер для правой части шапки */
+header .right {
+    display: flex;
+    align-items: center;
+}
+
+header .search input {
+    padding: 5px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+header .search input:focus {
+    outline: none;
+    border-color: #2a7f5e;
+}
+
+/* Навигация */
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
+
+/* Контейнер контента */
+.container {
+    padding: 20px;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-top: 2px solid #ccc;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    color: #777;
+}
